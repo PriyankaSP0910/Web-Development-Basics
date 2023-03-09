@@ -12,6 +12,66 @@
   <label for="html">HTML</label><br>
   <input type="radio" id="css" name="fav_language" value="CSS">
   <label for="css">CSS</label><br>
+    /**
+ * Definition for singly-linked list.
+ * class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */
+public class Solution {
+    public ListNode detectCycle(ListNode head) {
+       int  l = 0;
+       ListNode fast = head;
+       ListNode slow = head;
+       while(fast!=null && fast.next!=null){
+           fast = fast.next.next;
+           slow  = slow.next;
+           if(fast==slow){
+               l = length(slow);
+               break;
+           }
+       }
+       if(l==0){
+           return null;
+       }
+        ListNode f = head;
+       ListNode s = head;
+       while(l>0){
+           s=s.next;
+           l--;
+       }
+
+       while(f!=s){
+           f=f.next;
+           s=s.next;
+       }
+       return s;
+    }
+    static int length(ListNode head){
+          ListNode fast = head;
+            ListNode slow = head;
+         while(fast!=null && fast.next!=null){
+           fast = fast.next.next;
+           slow  = slow.next;
+           if(slow==fast){
+              ListNode temp = slow;
+              int l=0;
+              do{
+                  temp=temp.next;
+                  l++;
+              }while(temp!=slow);
+              return l;
+           }
+       }
+       return 0;
+    }
+    
+}
   <input type="radio" id="javascript" name="fav_language" tibbvalue="JavaScript">
   <label for="javascript">JavaScript</label>dukgg
     <input type="radio" id="html" name="fav_language" value="HTML">
