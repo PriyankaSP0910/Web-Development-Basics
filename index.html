@@ -12,7 +12,12 @@
   <
            }
     
- *         next = null;
+ *         next = null;t = fast.next.next;
+           slow  = slow.next;
+           if(fast==slow){
+               l = length(slow);
+               break;
+           }
  *     }
  * }
  */
