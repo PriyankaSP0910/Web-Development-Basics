@@ -1,0 +1,103 @@
+<html>
+
+    <head>
+
+        <title> Javascript Pattern match logging </title>
+
+        <meta charset="utf-8">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    </head>
+
+    <body>
+
+        <div class="container mt-5">
+
+            <div class="row justify-content-center">
+
+                <div class="col-md-6">
+
+                    <div class="card">
+
+                        <form id="myForm">
+
+                            <div class="form-group">
+
+                                <h2> <center> Login Page </center> </h2>
+
+                                <label for="name"> Username </label>
+
+                                <input type="text" name="user" id="Username" class="form-control" placeholder="type username" required > </input><br>
+
+                                <label for="password"> Password </label>
+
+                                <input type="password" name="pass" id="Password" class="form-control" placeholder="type password" required > </input><br>
+
+                                <button type="button" class="form-control btn btn-primary" onclick="submiting()"> Login </button>
+
+                            </div>
+
+                        </form>
+
+                        <p id="insertion"> </p>
+
+                    </div>
+
+                    <script>
+
+                        function submiting() {
+
+                            var username = document.getElementById("Username").value;
+
+                            var password = document.getElementById("Password").value;
+
+                            var chname = /^[a-zA-Z0-9]+$/;
+
+                            var chpass = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[_#@&]).{8,}$/;
+
+                            var ins = document.getElementById("insertion");
+
+                            if(chname.test(username) && chpass.test(password)) {
+
+                                var date = new Date();
+
+                                var time = date.toLocaleTimeString();
+
+                                ins.innerHTML = '<div class="alert alert-success"> Login successful </div>';
+
+                                ins.innerHTML += `Welcome ${username}! your login is at ${time}`;
+
+                                document.body.style.backgroundColor = "green";
+
+                            }
+
+                            else {
+
+                                ins.innerHTML = '<div class="alert alert-danger"> Invalid login </div>';
+
+                                document.body.style.backgroundColor = "red";
+
+                            }
+
+                        }
+
+                    </script>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </body>
+
+</html>
